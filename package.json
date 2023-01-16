@@ -25,6 +25,7 @@
     "@nestjs/common": "^9.2.1",
     "@nestjs/core": "^9.2.1",
     "@nestjs/platform-express": "^9.2.1",
+    "lint-staged": "^13.1.0",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^4.0.7",
     "rxjs": "^7.8.0"
