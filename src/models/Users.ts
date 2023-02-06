@@ -1,17 +1,19 @@
 import {
   AllowNull,
   AutoIncrement,
+  BelongsTo,
   Column,
-  CreatedAt,
+  ForeignKey,
   Model,
   PrimaryKey,
   Table,
   Unique,
-  UpdatedAt,
 } from 'sequelize-typescript';
+import { BeardType } from './BeardType';
+import { CreationFields } from './CreationFieldsInterface';
 
 @Table
-export class Users extends Model {
+export class Users extends Model<CreationFields> {
   @PrimaryKey
   @AutoIncrement
   id: number;
@@ -33,8 +35,12 @@ export class Users extends Model {
   @Column
   password: string;
 
+  @ForeignKey(() => BeardType)
   @Column
-  id_beard_type: number;
+  idBeardType: number;
+
+  @BelongsTo(() => BeardType)
+  beardType: BeardType;
 
   @Column
   profile_picture: string;
@@ -50,17 +56,4 @@ export class Users extends Model {
 
   @Column({ defaultValue: true })
   status: boolean;
-
-  @AllowNull(false)
-  @CreatedAt
-  created_at: Date;
-
-  @UpdatedAt
-  updated_at: Date;
-
-  @Column
-  created_by: number;
-
-  @Column
-  updated_by: number;
 }
